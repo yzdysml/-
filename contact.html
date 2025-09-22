@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>联系 - 破晓科创实验室</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">破晓科创实验室</a>
+      <nav class="nav" id="nav">
+        <a href="index.html">首页</a>
+        <a href="members.html">成员</a>
+        <a href="projects.html">项目</a>
+        <a href="awards.html">荣誉</a>
+        <a href="contact.html" class="active">联系</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="打开菜单">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <h1>联系</h1>
+        <p class="muted">可在下方留下需求或合作意向，我们会尽快回复。</p>
+        
+        <div class="contact-info">
+          <h2>联系方式</h2>
+          <p><strong>联系人：</strong>马乐</p>
+          <p><strong>邮箱：</strong>3182302006@qq.com</p>
+        </div>
+
+        <form class="form" onsubmit="event.preventDefault(); alert('感谢您的留言！'); this.reset();">
+          <div class="form-row">
+            <label>姓名</label>
+            <input type="text" required placeholder="张三" />
+          </div>
+          <div class="form-row">
+            <label>邮箱</label>
+            <input type="email" required placeholder="name@example.com" />
+          </div>
+          <div class="form-row">
+            <label>内容</label>
+            <textarea rows="5" required placeholder="请简要描述您的诉求……"></textarea>
+          </div>
+          <button class="btn primary" type="submit">提交</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="brand">破晓科创实验室</div>
+          <p class="muted">© <span id="year"></span> All rights reserved.</p>
+        </div>
+        <div>
+          <div class="footer-title">导航</div>
+          <ul class="footer-links">
+            <li><a href="members.html">成员</a></li>
+            <li><a href="projects.html">项目</a></li>
+            <li><a href="contact.html">联系</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-title">联系</div>
+          <p class="muted">邮箱：3182302006@qq.com</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
+
+
