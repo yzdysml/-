@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>联系 - 破晓科创实验室</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <img src="assets/img/logo.png" alt="破晓科创实验室" class="brand-logo" />
+        <span class="brand-text">破晓科创实验室</span>
+      </a>
+      <nav class="nav" id="nav">
+        <a href="index.html">首页</a>
+        <a href="members.html">成员</a>
+        <a href="projects.html">项目</a>
+        <a href="awards.html">荣誉</a>
+        <a href="contact.html" class="active">联系</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="打开菜单">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <h1>联系</h1>
+        <p class="muted">实验室欢迎热爱科技的同学加入，可在下方留下需求或合作意向，我们会尽快回复。</p>
+        
+        <div class="contact-info">
+          <h2>联系方式</h2>
+          <p><strong>联系人：</strong>马乐</p>
+          <p><strong>邮箱：</strong>3182302006@qq.com</p>
+        </div>
+
+        <form class="form" id="contact-form">
+          <h3>📧 发送消息</h3>
+          <p class="muted">填写下方表单，我们会尽快回复您</p>
+          
+          <div class="form-row">
+            <label>姓名</label>
+            <input type="text" name="name" id="name" required placeholder="请输入您的姓名" />
+          </div>
+          <div class="form-row">
+            <label>邮箱</label>
+            <input type="email" name="email" id="email" required placeholder="请输入您的邮箱" />
+          </div>
+          <div class="form-row">
+            <label>内容</label>
+            <textarea name="message" id="message" rows="5" required placeholder="请简要描述您的诉求或合作意向..."></textarea>
+          </div>
+          <button class="btn primary" type="submit">📨 发送消息</button>
+        </form>
+        
+        <div id="success-message" style="display: none; margin-top: 20px; padding: 15px; background: rgba(79, 124, 255, 0.1); border: 1px solid rgba(79, 124, 255, 0.3); border-radius: 8px; color: #c9d6ff;">
+          ✅ 消息发送成功！我们会尽快回复您。
+        </div>
+        
+        <div id="error-message" style="display: none; margin-top: 20px; padding: 15px; background: rgba(255, 100, 100, 0.1); border: 1px solid rgba(255, 100, 100, 0.3); border-radius: 8px; color: #ffb3b3;">
+          ❌ 发送失败，请稍后重试或直接发送邮件至：3182302006@qq.com
+        </div>
+        
+        
+        <div style="background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-top: 30px;">
+          <h3>📞 其他联系方式</h3>
+          <p><strong>📱 联系电话（微信同号）：</strong>18535190586</p>
+          <p><strong>👤 联系人：</strong>马乐</p>
+          <p><strong>🏢 单位：</strong>破晓科创实验室</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="brand">
+            <img src="assets/img/logo.png" alt="破晓科创实验室" class="footer-logo" />
+            <span>破晓科创实验室</span>
+          </div>
+          <p class="muted small">以旭日象征破晓新生，以电路象征科技创新，蓝灰主色体现稳健与长远，传递"让生活更美好"的愿景。</p>
+          <p class="muted">© <span id="year"></span> 破晓科创实验室版权所有</p>
+        </div>
+        <div>
+          <div class="footer-title">导航</div>
+          <ul class="footer-links">
+            <li><a href="members.html">成员</a></li>
+            <li><a href="projects.html">项目</a></li>
+            <li><a href="contact.html">联系</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-title">联系</div>
+          <p class="muted">邮箱：3182302006@qq.com</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    // EmailJS 配置
+    (function() {
+      emailjs.init("JH47dJSYhVEUNE5Ad"); // EmailJS公钥
+      
+      document.getElementById('contact-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        const submitBtn = event.target.querySelector('button[type="submit"]');
+        const successMsg = document.getElementById('success-message');
+        const errorMsg = document.getElementById('error-message');
+        
+        // 隐藏之前的消息
+        successMsg.style.display = 'none';
+        errorMsg.style.display = 'none';
+        
+        // 显示加载状态
+        submitBtn.textContent = '发送中...';
+        submitBtn.disabled = true;
+        
+        // 获取表单数据
+        const formData = {
+          name: document.getElementById('name').value,
+          email: document.getElementById('email').value,
+          message: document.getElementById('message').value,
+          to_email: '3182302006@qq.com' // 您的邮箱
+        };
+        
+        // 发送邮件
+        emailjs.send('service_vu5clj5', 'template_kz7tuui', formData)
+          .then(function(response) {
+            console.log('SUCCESS!', response.status, response.text);
+            successMsg.style.display = 'block';
+            document.getElementById('contact-form').reset();
+          })
+          .catch(function(error) {
+            console.log('FAILED...', error);
+            errorMsg.style.display = 'block';
+          })
+          .finally(function() {
+            submitBtn.textContent = '📨 发送消息';
+            submitBtn.disabled = false;
+          });
+      });
+    })();
+    
+    function copyEmail() {
+      const email = '3182302006@qq.com';
+      
+      // 尝试使用现代API复制
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(email).then(function() {
+          showCopyMessage('✅ 邮箱地址已复制到剪贴板！');
+        }).catch(function() {
+          fallbackCopy(email);
+        });
+      } else {
+        fallbackCopy(email);
+      }
+    }
+    
+    function fallbackCopy(text) {
+      // 创建临时文本区域
+      const textArea = document.createElement('textarea');
+      textArea.value = text;
+      textArea.style.position = 'fixed';
+      textArea.style.left = '-999999px';
+      textArea.style.top = '-999999px';
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      
+      try {
+        document.execCommand('copy');
+        showCopyMessage('✅ 邮箱地址已复制到剪贴板！');
+      } catch (err) {
+        showCopyMessage('❌ 复制失败，请手动复制：3182302006@qq.com');
+      }
+      
+      document.body.removeChild(textArea);
+    }
+    
+    function showCopyMessage(message) {
+      // 创建提示消息
+      const messageDiv = document.createElement('div');
+      messageDiv.textContent = message;
+      messageDiv.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 15px 20px;
+        color: var(--text);
+        font-size: 14px;
+        z-index: 1000;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      `;
+      
+      document.body.appendChild(messageDiv);
+      
+      // 2秒后自动移除
+      setTimeout(function() {
+        document.body.removeChild(messageDiv);
+      }, 2000);
+    }
+  </script>
+</body>
+</html>
+
+
